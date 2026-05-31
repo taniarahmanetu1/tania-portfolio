@@ -265,75 +265,56 @@
         }
 
         /* ===== PRINT / CV STYLES ===== */
-        @media print {
-            body * { visibility: hidden; }
-            #cv-print-area, #cv-print-area * { visibility: visible; }
-            #cv-print-area {
-                position: absolute; left: 0; top: 0;
-                width: 100%; margin: 0; padding: 0;
-                background: white; color: black; z-index: 9999;
-            }
-            .no-print { display: none !important; }
-            a { text-decoration: none; color: inherit; }
-        }
+/* ===== PRINT / CV STYLES ===== */
+@media print {
+    body * { visibility: hidden; }
+    #cv-print-area, #cv-print-area * { visibility: visible; }
+    #cv-print-area {
+        position: absolute; left: 0; top: 0;
+        width: 100%; margin: 0; padding: 0;
+        background: white; color: black; z-index: 9999;
+    }
+    .no-print { display: none !important; }
+    a { text-decoration: none; color: inherit; }
+}
 
-        .cv-section-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 13px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 3px;
-            color: #ec4899; border-bottom: 2px solid #ec4899;
-            padding-bottom: 4px; margin-bottom: 12px;
-            display: inline-block;
-        }
-        .cv-entry-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700; font-size: 14px; color: #1e293b;
-        }
-        .cv-entry-sub {
-            font-family: 'Inter', sans-serif;
-            font-size: 12px; color: #64748b; font-weight: 500;
-        }
-        .cv-entry-desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px; color: #475569; line-height: 1.5;
-        }
-        .cv-skill-bar-bg {
-            background: #e2e8f0; border-radius: 4px; height: 6px; width: 100%;
-        }
-        .cv-skill-bar-fill {
-            background: linear-gradient(to right, #ec4899, #8b5cf6);
-            border-radius: 4px; height: 100%;
-        }
+/* CV Modal Overlay */
+.cv-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 20px; overflow-y: auto;
+}
 
-        .cv-overlay {
-            position: fixed; inset: 0; z-index: 100;
-            background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
-            display: flex; align-items: flex-start; justify-content: center;
-            padding: 20px; overflow-y: auto;
-        }
+/* Chatbot Scrollbar */
+.chat-scroll::-webkit-scrollbar { width: 4px; }
+.chat-scroll::-webkit-scrollbar-track { background: transparent; }
+.chat-scroll::-webkit-scrollbar-thumb { background: #ec4899; border-radius: 4px; }
 
-        .chat-scroll::-webkit-scrollbar { width: 4px; }
-        .chat-scroll::-webkit-scrollbar-track { background: transparent; }
-        .chat-scroll::-webkit-scrollbar-thumb { background: #ec4899; border-radius: 4px; }
+/* Typing Animation */
+@keyframes typingDot {
+    0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-4px); }
+}
+.typing-dot:nth-child(1) { animation: typingDot 1.4s infinite 0s; }
+.typing-dot:nth-child(2) { animation: typingDot 1.4s infinite 0.2s; }
+.typing-dot:nth-child(3) { animation: typingDot 1.4s infinite 0.4s; }
 
-        @keyframes typingDot {
-            0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
-            30% { opacity: 1; transform: translateY(-4px); }
-        }
-        .typing-dot:nth-child(1) { animation: typingDot 1.4s infinite 0s; }
-        .typing-dot:nth-child(2) { animation: typingDot 1.4s infinite 0.2s; }
-        .typing-dot:nth-child(3) { animation: typingDot 1.4s infinite 0.4s; }
-
-        @keyframes chatPulse {
-            0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.5); }
-            70% { box-shadow: 0 0 0 15px rgba(236, 72, 153, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
-        }
-        .chat-pulse-ring { animation: chatPulse 2s infinite; }
-    </style>
+/* Chat Pulse Animation */
+@keyframes chatPulse {
+    0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(236, 72, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
+}
+.chat-pulse-ring { animation: chatPulse 2s infinite; }
+</style>
 </head>
 <body class="antialiased selection:bg-pink-500 selection:text-white">
     <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef, useCallback } = React;
+        const { motion, AnimatePresence } = window.Motion;
 
     <script type="text/babel">
         const { useState, useEffect, useRef, useCallback } = React;
