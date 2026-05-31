@@ -330,266 +330,10 @@
             100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
         }
         .chat-pulse-ring { animation: chatPulse 2s infinite; }
-
-        /* ===== NEW ENHANCED ANIMATIONS ===== */
-
-        /* Shimmer effect for cards */
-        .shimmer-card {
-            position: relative;
-            overflow: hidden;
-        }
-        .shimmer-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 60%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-            transform: skewX(-20deg);
-            animation: shimmer 4s ease-in-out infinite;
-            z-index: 1;
-            pointer-events: none;
-        }
-        @keyframes shimmer {
-            0% { left: -100%; }
-            50%, 100% { left: 150%; }
-        }
-
-        /* Magnetic hover glow */
-        .glow-on-hover {
-            transition: box-shadow 0.4s ease, transform 0.3s ease;
-        }
-        .glow-on-hover:hover {
-            box-shadow: 0 0 30px rgba(236, 72, 153, 0.35), 0 0 60px rgba(139, 92, 246, 0.15);
-            transform: translateY(-4px);
-        }
-
-        /* Reveal text animation */
-        .reveal-text {
-            overflow: hidden;
-        }
-        .reveal-text span {
-            display: inline-block;
-            animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
-        @keyframes revealUp {
-            from { transform: translateY(100%); opacity: 0; }
-            to   { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Neon border pulse */
-        .neon-border {
-            animation: neonPulse 3s ease-in-out infinite alternate;
-        }
-        @keyframes neonPulse {
-            from { border-color: rgba(236,72,153,0.2); box-shadow: 0 0 5px rgba(236,72,153,0.1); }
-            to   { border-color: rgba(139,92,246,0.5); box-shadow: 0 0 20px rgba(139,92,246,0.2), 0 0 40px rgba(236,72,153,0.1); }
-        }
-
-        /* Rotating gradient border */
-        .gradient-border-spin {
-            position: relative;
-            z-index: 0;
-        }
-        .gradient-border-spin::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: inherit;
-            background: conic-gradient(from 0deg, #ec4899, #8b5cf6, #06b6d4, #ec4899);
-            animation: spinBorder 4s linear infinite;
-            z-index: -1;
-        }
-        @keyframes spinBorder {
-            from { transform: rotate(0deg); }
-            to   { transform: rotate(360deg); }
-        }
-
-        /* Stagger fade-in for lists */
-        .stagger-item {
-            opacity: 0;
-            transform: translateX(-20px);
-            animation: staggerIn 0.5s ease forwards;
-        }
-        @keyframes staggerIn {
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        /* Heartbeat for active badge */
-        .heartbeat {
-            animation: heartbeat 1.8s ease-in-out infinite;
-        }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            14% { transform: scale(1.12); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.08); }
-            70% { transform: scale(1); }
-        }
-
-        /* Ripple click effect */
-        .ripple-btn {
-            position: relative;
-            overflow: hidden;
-        }
-        .ripple-btn::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-            transform: scale(0);
-            opacity: 0;
-            transition: transform 0.5s ease, opacity 0.5s ease;
-        }
-        .ripple-btn:active::after {
-            transform: scale(2.5);
-            opacity: 1;
-            transition: 0s;
-        }
-
-        /* Floating particles in sections */
-        .section-particle {
-            position: absolute;
-            width: 4px; height: 4px;
-            border-radius: 50%;
-            background: rgba(236,72,153,0.4);
-            pointer-events: none;
-            animation: sectionFloat linear infinite;
-        }
-        @keyframes sectionFloat {
-            0%   { transform: translateY(0) scale(1);   opacity: 0.6; }
-            100% { transform: translateY(-80px) scale(0); opacity: 0; }
-        }
-
-        /* Skill bar glow sweep */
-        .skill-bar-sweep {
-            position: relative;
-            overflow: hidden;
-        }
-        .skill-bar-sweep::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -50%;
-            width: 40%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: skillSweep 2.5s ease-in-out infinite;
-        }
-        @keyframes skillSweep {
-            0%   { left: -50%; }
-            100% { left: 120%; }
-        }
-
-        /* Section header underline draw */
-        .draw-underline {
-            position: relative;
-            display: inline-block;
-        }
-        .draw-underline::after {
-            content: '';
-            position: absolute;
-            bottom: -4px; left: 0;
-            height: 3px; width: 0%;
-            background: linear-gradient(to right, #ec4899, #8b5cf6);
-            border-radius: 999px;
-            transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .draw-underline:hover::after,
-        .draw-underline.in-view::after {
-            width: 100%;
-        }
-
-        /* Morphing background blobs in sections */
-        @keyframes morphBlob {
-            0%,100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-            25%      { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-            50%      { border-radius: 50% 60% 30% 60% / 30% 40% 70% 60%; }
-            75%      { border-radius: 40% 50% 60% 30% / 60% 70% 40% 50%; }
-        }
-        .morph-blob {
-            animation: morphBlob 10s ease-in-out infinite;
-        }
-
-        /* Number counter pop */
-        @keyframes counterPop {
-            0%   { transform: scale(0.5); opacity: 0; }
-            70%  { transform: scale(1.1); }
-            100% { transform: scale(1);   opacity: 1; }
-        }
-        .counter-pop {
-            animation: counterPop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-        }
-
-        /* Cursor trail dot */
-        .cursor-dot {
-            width: 10px; height: 10px;
-            background: radial-gradient(circle, #ec4899, #8b5cf6);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-            mix-blend-mode: screen;
-        }
-        .cursor-ring {
-            width: 36px; height: 36px;
-            border: 1.5px solid rgba(236,72,153,0.5);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: all 0.12s ease;
-        }
-
-        /* Section entrance wave */
-        @keyframes waveIn {
-            from { clip-path: inset(0 100% 0 0); }
-            to   { clip-path: inset(0 0% 0 0); }
-        }
-        .wave-in {
-            animation: waveIn 0.9s cubic-bezier(0.16,1,0.3,1) both;
-        }
-
-        /* Card tilt pseudo 3D feel — via JS */
-        .tilt-card {
-            transform-style: preserve-3d;
-            transition: transform 0.2s ease;
-        }
-
-        /* Progress ring for skills */
-        .progress-ring-circle {
-            transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-            transform: rotate(-90deg);
-            transform-origin: 50% 50%;
-        }
     </style>
 </head>
 <body class="antialiased selection:bg-pink-500 selection:text-white">
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
     <div id="root"></div>
-    <script>
-        const dot = document.getElementById('cursorDot');
-        const ring = document.getElementById('cursorRing');
-        let rx = window.innerWidth/2, ry = window.innerHeight/2;
-        dot.style.left = rx-5+'px'; dot.style.top = ry-5+'px';
-        ring.style.left = rx-18+'px'; ring.style.top = ry-18+'px';
-        document.addEventListener('mousemove', e => {
-            dot.style.left = e.clientX-5+'px';
-            dot.style.top  = e.clientY-5+'px';
-        });
-        (function animRing(){
-            const tx = parseFloat(dot.style.left||0)+5-18;
-            const ty = parseFloat(dot.style.top||0)+5-18;
-            rx += (tx-rx)*0.14; ry += (ty-ry)*0.14;
-            ring.style.left = rx+'px'; ring.style.top = ry+'px';
-            requestAnimationFrame(animRing);
-        })();
-        document.addEventListener('mousedown', ()=>{ dot.style.transform='scale(2.2)'; ring.style.transform='scale(0.6)'; ring.style.borderColor='rgba(139,92,246,0.8)'; });
-        document.addEventListener('mouseup',   ()=>{ dot.style.transform='scale(1)';   ring.style.transform='scale(1)';   ring.style.borderColor='rgba(236,72,153,0.5)'; });
-        document.addEventListener('mouseover', e => {
-            if(e.target.closest('a,button,[class*="glass-card"]')) { ring.style.transform='scale(1.8)'; ring.style.borderColor='rgba(236,72,153,0.8)'; dot.style.opacity='0'; }
-            else { ring.style.transform='scale(1)'; ring.style.borderColor='rgba(236,72,153,0.5)'; dot.style.opacity='1'; }
-        });
-    </script>
 
     <script type="text/babel">
         const { useState, useEffect, useRef, useCallback } = React;
@@ -624,10 +368,6 @@
             Bot: (p) => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>,
             Sparkles: (p) => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>,
             Minus: (p) => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/></svg>,
-            Twitter: (p) => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>,
-            Instagram: (p) => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>,
-            Github: (p) => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>,
-            Upwork: (p) => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.545-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.452-5.439-5.452z"/></svg>,
             Star: (p) => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>,
             CheckCircle: (p) => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>,
             Clock: (p) => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
@@ -637,14 +377,9 @@
         // --- DATA ---
         const links = {
             linkedin: "https://www.linkedin.com/in/tania-rahman-etu/",
-            facebook: "https://www.facebook.com/people/Tania-Rahman/100080106912661/",
+            facebook: "https://www.facebook.com/profile.php?id=100080106912661",
             behance: "https://www.behance.net/taniarahmanetu",
-            fiverr: "https://www.fiverr.com/designer_taniar",
-            upwork: "https://www.upwork.com/freelancers/~01a1bedbc1ab9689fc",
-            instagram: "https://www.instagram.com/designer_taniar/",
-            twitter: "https://x.com/DesignerTaniaR2",
-            github: "https://github.com/taniarahmanetu1/portfolio",
-            email: "taniarahman.freelancer@gmail.com"
+            email: "taniarahman@gmail.com"
         };
         const profileImageUrl = "https://z-cdn-media.chatglm.cn/files/ebb43ba9-cdd5-4e98-8498-64089eaf2875.jpg?auth_key=1879659516-de088c0e87994cf7a209339be294dc16-0-6d1858f86c4528745bbdf1c413e2edcf";
 
@@ -700,8 +435,8 @@
             { keywords: ['experience', 'work history', 'job', 'company', 'career', 'employment'], response: "Tania's professional journey:\n\n🏢 Infinity Technology Intl. — BDO (May 2025 - Present)\n🎨 Amnick Social Enterprise — Graphic Designer (Mar 2023 - Present)\n🟠 Fiverr — Level 2 Seller (May 2021 - Present)\n👩‍🏫 Her Power Project — Graphics Trainer (Sep 2023 - Apr 2025)" },
             { keywords: ['education', 'degree', 'study', 'university', 'college', 'academic', 'qualification'], response: "Tania's educational background:\n\n🎓 PGDIT — University of Dhaka (2024-2025)\n🎓 MSc Fishing & Fisheries — National University\n🎓 BSc Zoology — National University\n🏅 NSDA Level-3 Certificate — Graphic Design" },
             { keywords: ['fiverr', 'freelance', 'level', 'seller', 'rating', 'review'], response: "Tania is a proud Fiverr Level 2 Seller! 🟠 She's been freelancing since May 2021, delivering high-quality graphic design, animation, and technical documentation to 200+ clients worldwide with consistently excellent reviews." },
-            { keywords: ['hire', 'contact', 'reach', 'email', 'phone', 'book', 'project', 'commission'], response: "Great news! 🎉 You can hire Tania through:\n\n📧 Email: taniarahman.freelancer@gmail.com\n🔗 LinkedIn: linkedin.com/in/tania-rahman-etu\n🟠 Fiverr: Search 'Tania Rahman' on Fiverr\n\nOr simply scroll down to the Contact section and send a message directly!" },
-            { keywords: ['price', 'cost', 'rate', 'fee', 'budget', 'charge', 'how much', 'expensive', 'cheap'], response: "Pricing depends on the project scope and complexity. Tania offers competitive rates tailored to your budget. For a custom quote, it's best to reach out directly via email at taniarahman.freelancer@gmail.com or message her on Fiverr! 💰" },
+            { keywords: ['hire', 'contact', 'reach', 'email', 'phone', 'book', 'project', 'commission'], response: "Great news! 🎉 You can hire Tania through:\n\n📧 Email: taniarahman@gmail.com\n🔗 LinkedIn: linkedin.com/in/tania-rahman-etu\n🟠 Fiverr: Search 'Tania Rahman' on Fiverr\n\nOr simply scroll down to the Contact section and send a message directly!" },
+            { keywords: ['price', 'cost', 'rate', 'fee', 'budget', 'charge', 'how much', 'expensive', 'cheap'], response: "Pricing depends on the project scope and complexity. Tania offers competitive rates tailored to your budget. For a custom quote, it's best to reach out directly via email at taniarahman@gmail.com or message her on Fiverr! 💰" },
             { keywords: ['portfolio', 'project', 'sample', 'work sample', 'example', 'showcase', 'behance'], response: "You can explore Tania's work right here on this website — check the Portfolio section! For even more projects, visit her Behance: behance.net/taniarahmanetu 🎨\n\nFeatured projects include the 'Mist & Glow' skincare device, 'WIPE UP' wall dispenser, and multiple software systems." },
             { keywords: ['srs', 'documentation', 'software requirement', 'technical writing', 'user manual', 'uat'], response: "SRS & Documentation is one of Tania's strongest areas (95% proficiency)! 📝 She creates comprehensive Software Requirements Specifications, user manuals, tender documents, and performs UAT at her current role at Infinity Technology. She's especially skilled at translating complex technical requirements into clear, precise documents." },
             { keywords: ['illustration', 'technical drawing', 'patent', 'isometric', 'engineering drawing'], response: "Tania excels at precise technical illustrations! ✏️ Her notable works include:\n\n🔹 'Mist & Glow' — Skincare device with 7cm width, 150ml refill system\n🔹 'WIPE UP' — Wall-mounted dispenser with micro-diaphragm pump\n🔹 'Smoke Hunter' — 170cm industrial smoke capture unit\n\nShe specializes in patent-style drawings, isometric views, and cross-sections." },
@@ -713,13 +448,7 @@
             { keywords: ['bye', 'goodbye', 'see you', 'later', 'take care'], response: "Goodbye! 👋 It was great chatting with you. Don't forget to check out Tania's portfolio and reach out if you need her services. Have a wonderful day! 🌸" },
             { keywords: ['marketing', 'seo', 'social media', 'smm', 'content'], response: "Tania offers comprehensive Digital Marketing & SEO services! 📊 This includes:\n\n📱 Social media management\n🔍 Search engine optimization\n✍️ Content creation & strategy\n📈 Analytics and performance tracking\n🚀 High-converting campaign execution" },
             { keywords: ['cv', 'resume', 'download'], response: "You can generate and download Tania's professional CV right from this website! 📄 Just click the 'Generate & Download CV' button in the hero section. It auto-creates a beautifully formatted ATS-friendly CV from her portfolio data!" },
-            { keywords: ['available', 'free', 'busy', 'schedule', 'timeline', 'deadline'], response: "Tania is currently active and accepting new projects! ⏰ Her response time is typically within 24 hours.
-
-📬 Fastest ways to reach her:
-• 📧 taniarahman.freelancer@gmail.com
-• 🟠 fiverr.com/designer_taniar
-• 💼 Upwork: ~01a1bedbc1ab9689fc
-• 💼 LinkedIn: tania-rahman-etu" },
+            { keywords: ['available', 'free', 'busy', 'schedule', 'timeline', 'deadline'], response: "Tania is currently active and accepting new projects! ⏰ Her response time is typically within 24 hours. For urgent projects, mention it in your message and she'll prioritize accordingly. Best to reach out via email or Fiverr for the fastest response!" },
 
             // ===== NEW FAQ ENTRIES =====
             { keywords: ['turnaround', 'delivery time', 'how long', 'quick', 'fast', 'rush', 'urgent'], response: "Typical turnaround times:\n\n⚡ Logo & branding: 3–5 business days\n🖼️ Technical illustration: 5–7 business days\n🎬 Video editing (short): 2–4 days\n📝 SRS document: 5–10 days\n🌐 Web project: 2–6 weeks\n\nRush delivery is often available for an additional fee. Just mention your deadline upfront!" },
@@ -737,7 +466,7 @@
             { keywords: ['what is', 'meaning', 'explain', 'define', 'difference between'], response: "Happy to explain! 😊 Could you be more specific? For example:\n\n• What is SRS? → Software Requirements Specification document\n• What is technical illustration? → Precise drawings for patents/engineering\n• What is Fiverr Level 2? → Earned badge for top-performing sellers\n• What is UAT? → User Acceptance Testing\n\nJust ask your specific question!" },
             { keywords: ['difference', 'vs', 'compare', 'or', 'which', 'better'], response: "Great question! 🤔 Tania can help you choose the right service for your needs. Common comparisons:\n\n🎨 UI Design vs Graphic Design — UI is for apps/websites, graphic design is broader\n📝 SRS vs User Manual — SRS is for developers, manuals are for end users\n🖼️ Illustration vs Photography — Illustrations are custom-drawn, photos are captured\n\nAsk specifically and I'll give a detailed answer!" },
             { keywords: ['sample', 'see work', 'demo', 'show me', 'example work', 'past work'], response: "Sure! Here's where to see Tania's work:\n\n🎨 Behance: behance.net/taniarahmanetu\n📸 This portfolio website — scroll to the Portfolio section!\n🟠 Fiverr profile — live reviews + samples\n💼 LinkedIn: linkedin.com/in/tania-rahman-etu\n\nFeatured works include skincare device illustrations, dispenser patent drawings, and software projects!" },
-            { keywords: ['social', 'follow', 'connect', 'network', 'find you'], response: "You can find and follow Tania on:\n\n💼 LinkedIn: linkedin.com/in/tania-rahman-etu\n📘 Facebook: Tania Rahman ETU\n🎨 Behance: behance.net/taniarahmanetu\n📧 Email: taniarahman.freelancer@gmail.com\n🟠 Fiverr: Search 'Tania Rahman ETU'\n\nShe's most responsive on LinkedIn and email. Don't be shy — reach out! 😊" },
+            { keywords: ['social', 'follow', 'connect', 'network', 'find you'], response: "You can find and follow Tania on:\n\n💼 LinkedIn: linkedin.com/in/tania-rahman-etu\n📘 Facebook: Tania Rahman ETU\n🎨 Behance: behance.net/taniarahmanetu\n📧 Email: taniarahman@gmail.com\n🟠 Fiverr: Search 'Tania Rahman ETU'\n\nShe's most responsive on LinkedIn and email. Don't be shy — reach out! 😊" },
             { keywords: ['faq', 'frequently asked', 'common question', 'help', 'question'], response: "Here are the most common questions people ask me:\n\n❓ What services does Tania offer?\n❓ What are her rates?\n❓ How long does a project take?\n❓ Is she available for full-time work?\n❓ What tools does she use?\n❓ Does she offer revisions?\n❓ How do I hire her?\n❓ What are her qualifications?\n\nJust ask any of these directly — I've got detailed answers ready! 😊" },
         ];
 
@@ -1218,10 +947,10 @@
                                 transition={{ delay: 0.9 }}
                                 className="flex flex-col sm:flex-row items-center md:justify-start justify-center gap-4"
                             >
-                                <a href="#contact" className="ripple-btn px-8 py-4 bg-gradient-to-r from-pink-500 to-violet-600 rounded-full text-white font-bold shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 hover:-translate-y-1 transition-all w-full sm:w-auto text-center">
+                                <a href="#contact" className="px-8 py-4 bg-gradient-to-r from-pink-500 to-violet-600 rounded-full text-white font-bold shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 hover:-translate-y-1 transition-all w-full sm:w-auto text-center">
                                     ✨ Hire Me Today
                                 </a>
-                                <button onClick={onOpenCV} className="ripple-btn px-8 py-4 glass-card rounded-full font-bold flex items-center justify-center gap-2 hover:bg-white/20 transition-all w-full sm:w-auto group text-pink-500 border border-pink-500/30 neon-border">
+                                <button onClick={onOpenCV} className="px-8 py-4 glass-card rounded-full font-bold flex items-center justify-center gap-2 hover:bg-white/20 transition-all w-full sm:w-auto group text-pink-500 border border-pink-500/30">
                                     <Icons.FileText className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                     Generate & Download CV
                                 </button>
@@ -1237,10 +966,8 @@
                                 <span className="text-xs text-gray-400 font-medium">Follow on</span>
                                 {[
                                     { icon: Icons.Linkedin, href: links.linkedin, color: '#0077b5' },
+                                    { icon: Icons.Facebook, href: links.facebook, color: '#1877f2' },
                                     { icon: Icons.Behance, href: links.behance, color: '#1769ff' },
-                                    { icon: Icons.Instagram, href: links.instagram, color: '#e1306c' },
-                                    { icon: Icons.Twitter, href: links.twitter, color: '#000000' },
-                                    { icon: Icons.Github, href: links.github, color: '#333' },
                                 ].map((s, i) => (
                                     <a key={i} href={s.href} target="_blank" rel="noreferrer"
                                         className="w-9 h-9 rounded-full glass-card border border-gray-200/50 flex items-center justify-center text-gray-500 hover:text-white hover:border-transparent transition-all hover:-translate-y-1"
@@ -1286,7 +1013,7 @@
                     <div className="grid md:grid-cols-12 gap-16 items-center">
                         <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="md:col-span-5 relative">
                             <div className="absolute inset-0 bg-gradient-to-br from-pink-500 to-violet-600 rounded-[2rem] transform -rotate-3 opacity-30 blur-lg"></div>
-                            <div className="relative glass-card gradient-border-spin p-3 rounded-[2rem]"><img src={profileImageUrl} alt="Tania Rahman" className="rounded-[1.5rem] w-full object-cover aspect-square shadow-2xl" /></div>
+                            <div className="relative glass-card p-3 rounded-[2rem]"><img src={profileImageUrl} alt="Tania Rahman" className="rounded-[1.5rem] w-full object-cover aspect-square shadow-2xl" /></div>
                             <motion.div animate={{ y: [-10, 10, -10] }} transition={{ duration: 4, repeat: Infinity }} className="absolute -bottom-6 -right-6 glass-card p-4 rounded-2xl border border-pink-500/20 shadow-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-md"><div className="text-center"><h4 className="font-bold text-3xl gradient-text">5+</h4><p className="text-xs font-semibold tracking-wider text-gray-500 uppercase mt-1">Years<br/>Experience</p></div></motion.div>
                         </motion.div>
                         <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="md:col-span-7">
@@ -1298,9 +1025,9 @@
                                 <p>Currently, I serve as a Business Development Officer at Infinity Technology International Limited, where I heavily manage software documentation (SRS, User Manuals) and functional UAT. Simultaneously, I maintain a top-rated profile as a <strong className="text-pink-500">Level 2 Seller on Fiverr</strong>, delivering unparalleled results for an international clientele.</p>
                             </div>
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-10">
-                                <motion.div initial={{opacity:0,scale:0.5}} whileInView={{opacity:1,scale:1}} viewport={{once:true}} transition={{type:"spring",delay:0.1}} className="flex flex-col gap-2"><h4 className="font-bold text-3xl text-gray-900 dark:text-white counter-pop">200+</h4><p className="text-sm text-gray-500 font-medium">Global Clients</p></motion.div>
-                                <motion.div initial={{opacity:0,scale:0.5}} whileInView={{opacity:1,scale:1}} viewport={{once:true}} transition={{type:"spring",delay:0.2}} className="flex flex-col gap-2"><h4 className="font-bold text-3xl text-gray-900 dark:text-white counter-pop">Level 2</h4><p className="text-sm text-gray-500 font-medium">Fiverr Seller</p></motion.div>
-                                <motion.div initial={{opacity:0,scale:0.5}} whileInView={{opacity:1,scale:1}} viewport={{once:true}} transition={{type:"spring",delay:0.3}} className="flex flex-col gap-2"><h4 className="font-bold text-3xl text-gray-900 dark:text-white counter-pop">100%</h4><p className="text-sm text-gray-500 font-medium">Dedication</p></motion.div>
+                                <div className="flex flex-col gap-2"><h4 className="font-bold text-3xl text-gray-900 dark:text-white">200+</h4><p className="text-sm text-gray-500 font-medium">Global Clients</p></div>
+                                <div className="flex flex-col gap-2"><h4 className="font-bold text-3xl text-gray-900 dark:text-white">Level 2</h4><p className="text-sm text-gray-500 font-medium">Fiverr Seller</p></div>
+                                <div className="flex flex-col gap-2"><h4 className="font-bold text-3xl text-gray-900 dark:text-white">100%</h4><p className="text-sm text-gray-500 font-medium">Dedication</p></div>
                             </div>
                         </motion.div>
                     </div>
@@ -1309,17 +1036,14 @@
         );
 
         const Skills = () => (
-            <section id="skills" className="py-24 bg-white/40 dark:bg-slate-900/40 relative overflow-hidden">
-                {/* Morphing blob */}
-                <div className="absolute -top-32 -right-32 w-96 h-96 bg-pink-500/5 morph-blob pointer-events-none" />
-                <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-violet-500/5 morph-blob pointer-events-none" style={{animationDelay:'5s'}} />
+            <section id="skills" className="py-24 bg-white/40 dark:bg-slate-900/40 relative">
                 <div className="container mx-auto px-6 relative z-10">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16"><h2 className="text-3xl md:text-5xl font-bold font-serif mb-4 draw-underline">Technical Arsenal</h2><p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Mastering the tools needed to turn complex problems into elegant solutions.</p></motion.div>
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16"><h2 className="text-3xl md:text-5xl font-bold font-serif mb-4">Technical Arsenal</h2><p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Mastering the tools needed to turn complex problems into elegant solutions.</p></motion.div>
                     <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-5xl mx-auto">
                         {skillsData.map((s, i) => (
                             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="group">
                                 <div className="flex items-center gap-3 mb-3"><span className="font-semibold text-lg">{s.name}</span><span className="ml-auto font-bold text-gray-400 group-hover:text-pink-500 transition-colors">{s.level}%</span></div>
-                                <div className="w-full bg-gray-200 dark:bg-gray-700/50 rounded-full h-3 overflow-hidden shadow-inner"><motion.div initial={{ width: 0 }} whileInView={{ width: `${s.level}%` }} viewport={{ once: true }} transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }} className="bg-gradient-to-r from-pink-500 to-violet-500 h-full rounded-full skill-bar-sweep" /></div>
+                                <div className="w-full bg-gray-200 dark:bg-gray-700/50 rounded-full h-3 overflow-hidden shadow-inner"><motion.div initial={{ width: 0 }} whileInView={{ width: `${s.level}%` }} viewport={{ once: true }} transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }} className="bg-gradient-to-r from-pink-500 to-violet-500 h-full rounded-full" /></div>
                             </motion.div>
                         ))}
                     </div>
@@ -1330,10 +1054,10 @@
         const Services = () => (
             <section id="services" className="py-24">
                 <div className="container mx-auto px-6">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16"><h2 className="text-3xl md:text-5xl font-bold font-serif mb-4 draw-underline">What I Do Best</h2><p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Comprehensive services tailored to elevate your brand, product, and software documentation.</p></motion.div>
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16"><h2 className="text-3xl md:text-5xl font-bold font-serif mb-4">What I Do Best</h2><p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Comprehensive services tailored to elevate your brand, product, and software documentation.</p></motion.div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {servicesData.map((s, i) => (
-                            <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} whileHover={{ y: -10, scale: 1.02 }} className="glass-card shimmer-card tilt-card p-8 rounded-3xl hover:shadow-pink-500/20 shadow-xl transition-all duration-300 group cursor-default relative overflow-hidden">
+                            <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} whileHover={{ y: -10, scale: 1.02 }} className="glass-card p-8 rounded-3xl hover:shadow-pink-500/20 shadow-xl transition-all duration-300 group cursor-default relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-pink-500/10 to-transparent rounded-bl-full -z-10 group-hover:scale-150 transition-transform duration-500"></div>
                                 <div className="w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl flex items-center justify-center mb-6 shadow-md text-pink-500 group-hover:bg-gradient-to-br group-hover:from-pink-500 group-hover:to-violet-600 group-hover:text-white transition-all duration-300 transform group-hover:rotate-6"><s.icon className="w-8 h-8" /></div>
                                 <h3 className="text-xl font-bold mb-4 font-serif">{s.title}</h3>
@@ -1435,32 +1159,16 @@
                                 <div>
                                     <h3 className="text-2xl font-bold mb-6 font-serif">Contact Info</h3>
                                     <div className="space-y-4">
-                                        <a href={`mailto:${links.email}`} className="glass-card glow-on-hover p-4 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow group"><div className="w-12 h-12 bg-pink-500/10 text-pink-500 rounded-full flex justify-center items-center shrink-0 group-hover:scale-110 transition-transform"><Icons.Mail className="w-5 h-5" /></div><div><h4 className="font-bold text-sm text-gray-500">Email</h4><p className="font-medium text-gray-900 dark:text-white break-all">{links.email}</p></div></a>
-                                        <a href={links.fiverr} target="_blank" rel="noreferrer" className="glass-card glow-on-hover p-4 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow group"><div className="w-12 h-12 rounded-full flex justify-center items-center shrink-0 group-hover:scale-110 transition-transform" style={{background:'rgba(29,191,115,0.1)',color:'#1dbf73'}}><Icons.FiverrIcon className="w-5 h-5" /></div><div><h4 className="font-bold text-sm text-gray-500">Fiverr</h4><p className="font-medium text-gray-900 dark:text-white text-sm">fiverr.com/designer_taniar</p></div></a>
-                                        <a href={links.upwork} target="_blank" rel="noreferrer" className="glass-card glow-on-hover p-4 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow group"><div className="w-12 h-12 rounded-full flex justify-center items-center shrink-0 group-hover:scale-110 transition-transform" style={{background:'rgba(20,168,0,0.1)',color:'#14a800'}}><Icons.Upwork className="w-5 h-5" /></div><div><h4 className="font-bold text-sm text-gray-500">Upwork</h4><p className="font-medium text-gray-900 dark:text-white text-sm">View Profile</p></div></a>
+                                        <a href={`mailto:${links.email}`} className="glass-card p-4 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow group"><div className="w-12 h-12 bg-pink-500/10 text-pink-500 rounded-full flex justify-center items-center shrink-0 group-hover:scale-110 transition-transform"><Icons.Mail className="w-5 h-5" /></div><div><h4 className="font-bold text-sm text-gray-500">Email</h4><p className="font-medium text-gray-900 dark:text-white break-all">{links.email}</p></div></a>
                                         <div className="glass-card p-4 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow group"><div className="w-12 h-12 bg-violet-500/10 text-violet-500 rounded-full flex justify-center items-center shrink-0 group-hover:scale-110 transition-transform"><Icons.Phone className="w-5 h-5" /></div><div><h4 className="font-bold text-sm text-gray-500">Phone</h4><p className="font-medium text-gray-900 dark:text-white">Available on request</p></div></div>
                                         <div className="glass-card p-4 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow group"><div className="w-12 h-12 bg-pink-500/10 text-pink-500 rounded-full flex justify-center items-center shrink-0 group-hover:scale-110 transition-transform"><Icons.MapPin className="w-5 h-5" /></div><div><h4 className="font-bold text-sm text-gray-500">Location</h4><p className="font-medium text-gray-900 dark:text-white">Dhaka, Bangladesh</p></div></div>
                                     </div>
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-bold mb-4 font-serif">Follow Me</h3>
-                                    <div className="grid grid-cols-4 gap-2">
-                                        {[
-                                            { icon: Icons.Linkedin, href: links.linkedin, label: 'LinkedIn', color: '#0077b5' },
-                                            { icon: Icons.Behance, href: links.behance, label: 'Behance', color: '#1769ff' },
-                                            { icon: Icons.Facebook, href: links.facebook, label: 'Facebook', color: '#1877f2' },
-                                            { icon: Icons.Instagram, href: links.instagram, label: 'Instagram', color: '#e1306c' },
-                                            { icon: Icons.Twitter, href: links.twitter, label: 'X / Twitter', color: '#000' },
-                                            { icon: Icons.Github, href: links.github, label: 'GitHub', color: '#333' },
-                                            { icon: Icons.Upwork, href: links.upwork, label: 'Upwork', color: '#14a800' },
-                                            { icon: Icons.FiverrIcon, href: links.fiverr, label: 'Fiverr', color: '#1dbf73' },
-                                        ].map((s, i) => (
-                                            <a key={i} href={s.href} target="_blank" rel="noreferrer" title={s.label}
-                                               className="w-12 h-12 glass-card rounded-xl flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                                               style={{}}
-                                               onMouseEnter={e => { e.currentTarget.style.background = s.color; e.currentTarget.style.color = 'white'; }}
-                                               onMouseLeave={e => { e.currentTarget.style.background = ''; e.currentTarget.style.color = ''; }}
-                                            ><s.icon className="w-5 h-5" /></a>
+                                    <div className="flex gap-3">
+                                        {[{ icon: Icons.Linkedin, href: links.linkedin }, { icon: Icons.Facebook, href: links.facebook }, { icon: Icons.Behance, href: links.behance }].map((s, i) => (
+                                            <a key={i} href={s.href} target="_blank" rel="noreferrer" className="w-12 h-12 glass-card rounded-xl flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-white hover:bg-gradient-to-br hover:from-pink-500 hover:to-violet-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-pink-500/20"><s.icon className="w-5 h-5" /></a>
                                         ))}
                                     </div>
                                 </div>
@@ -1574,15 +1282,11 @@ body { font-family: 'Calibri', 'Inter', Arial, sans-serif; color: #1a1a1a; backg
         <div class="name">Tania Rahman</div>
         <div class="title">Multi-Disciplinary Creative & Technical Professional | Graphic Designer | Software Documentation Expert | Fiverr Level 2 Seller</div>
         <div class="contact-row">
-          <span class="contact-item" data-icon="✉ ">taniarahman.freelancer@gmail.com</span>
+          <span class="contact-item" data-icon="✉ ">taniarahman@gmail.com</span>
           <span class="contact-item" data-icon="📍 ">Dhaka, Bangladesh</span>
           <span class="contact-item" data-icon="🔗 ">linkedin.com/in/tania-rahman-etu</span>
           <span class="contact-item" data-icon="🎨 ">behance.net/taniarahmanetu</span>
-          <span class="contact-item" data-icon="🟠 ">fiverr.com/designer_taniar</span>
-          <span class="contact-item" data-icon="💼 ">upwork.com/fl/~01a1bedbc1ab9689fc</span>
-          <span class="contact-item" data-icon="📸 ">instagram.com/designer_taniar</span>
-          <span class="contact-item" data-icon="🐦 ">x.com/DesignerTaniaR2</span>
-          <span class="contact-item" data-icon="💻 ">github.com/taniarahmanetu1</span>
+          <span class="contact-item" data-icon="🟠 ">Fiverr: Tania Rahman ETU (Level 2 Seller)</span>
         </div>
       </div>
     </div>
@@ -1766,15 +1470,11 @@ body { font-family: 'Calibri', 'Inter', Arial, sans-serif; color: #1a1a1a; backg
                                                 <div style={{ fontSize: '26pt', fontWeight: 700, color: '#c2185b', lineHeight: 1.1, marginBottom: '4px' }}>Tania Rahman</div>
                                                 <div style={{ fontSize: '11pt', color: '#444', fontWeight: 500, marginBottom: '8px' }}>Multi-Disciplinary Creative & Technical Professional | Graphic Designer | Software Documentation Expert | Fiverr Level 2 Seller</div>
                                                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 16px', fontSize: '9pt', color: '#333' }}>
-                                                    <span>✉ taniarahman.freelancer@gmail.com</span>
+                                                    <span>✉ taniarahman@gmail.com</span>
                                                     <span>📍 Dhaka, Bangladesh</span>
                                                     <span>🔗 linkedin.com/in/tania-rahman-etu</span>
                                                     <span>🎨 behance.net/taniarahmanetu</span>
-                                                    <span>🟠 fiverr.com/designer_taniar</span>
-                                    <span>💼 upwork.com/fl/~01a1bedbc1ab9689fc</span>
-                                    <span>📸 instagram.com/designer_taniar</span>
-                                    <span>🐦 x.com/DesignerTaniaR2</span>
-                                    <span>💻 github.com/taniarahmanetu1</span>
+                                                    <span>🟠 Fiverr: Level 2 Seller</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1877,16 +1577,7 @@ body { font-family: 'Calibri', 'Inter', Arial, sans-serif; color: #1a1a1a; backg
                 <div className="container mx-auto px-6">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                         <div className="text-center md:text-left"><a href="#" className="text-2xl font-bold font-serif gradient-text">Tania.</a><p className="text-sm text-gray-500 mt-2">Designing with purpose, documenting with precision.</p></div>
-                        <div className="flex items-center gap-4">{[
-                        { icon: Icons.Linkedin, href: links.linkedin },
-                        { icon: Icons.Behance, href: links.behance },
-                        { icon: Icons.Instagram, href: links.instagram },
-                        { icon: Icons.Twitter, href: links.twitter },
-                        { icon: Icons.Github, href: links.github },
-                        { icon: Icons.Upwork, href: links.upwork },
-                        { icon: Icons.FiverrIcon, href: links.fiverr },
-                        { icon: Icons.Mail, href: `mailto:${links.email}` },
-                    ].map((s, i) => (<a key={i} href={s.href} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-gray-200 dark:border-slate-700 flex items-center justify-center text-gray-500 hover:text-pink-500 hover:border-pink-500 transition-all hover:-translate-y-1"><s.icon className="w-4 h-4" /></a>))}</div>
+                        <div className="flex items-center gap-4">{[{ icon: Icons.Linkedin, href: links.linkedin }, { icon: Icons.Facebook, href: links.facebook }, { icon: Icons.Behance, href: links.behance }, { icon: Icons.Mail, href: `mailto:${links.email}` }].map((s, i) => (<a key={i} href={s.href} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-gray-200 dark:border-slate-700 flex items-center justify-center text-gray-500 hover:text-pink-500 hover:border-pink-500 transition-all hover:-translate-y-1"><s.icon className="w-4 h-4" /></a>))}</div>
                     </div>
                     <div className="text-center mt-8 pt-8 border-t border-gray-100 dark:border-slate-800"><p className="text-sm text-gray-400 flex items-center justify-center gap-1">© {new Date().getFullYear()} Tania Rahman. Crafted with <Icons.Heart className="w-3.5 h-3.5 text-pink-500 inline" /> in Dhaka</p></div>
                 </div>
@@ -1930,30 +1621,8 @@ body { font-family: 'Calibri', 'Inter', Arial, sans-serif; color: #1a1a1a; backg
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
-
-        // 3D tilt for glass cards
-        document.addEventListener('mousemove', e => {
-            document.querySelectorAll('.tilt-card').forEach(card => {
-                const r = card.getBoundingClientRect();
-                const dx = (e.clientX - r.left - r.width/2)  / (r.width/2);
-                const dy = (e.clientY - r.top  - r.height/2) / (r.height/2);
-                if (Math.abs(dx) < 1.4 && Math.abs(dy) < 1.4) {
-                    card.style.transform = `perspective(700px) rotateX(${-dy*7}deg) rotateY(${dx*7}deg) scale(1.02)`;
-                    card.style.boxShadow = `${-dx*12}px ${-dy*12}px 30px rgba(236,72,153,0.18)`;
-                } else {
-                    card.style.transform = '';
-                    card.style.boxShadow = '';
-                }
-            });
-        });
-
-        // Draw underline on scroll into view
-        const underlineObserver = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
-        }, { threshold: 0.6 });
-        setTimeout(() => {
-            document.querySelectorAll('.draw-underline').forEach(el => underlineObserver.observe(el));
-        }, 1000);
     </script>
 </body>
 </html>
+
+     
